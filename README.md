@@ -1,4 +1,4 @@
-# CRUD Simples em Python
+# CRUD Simples em Python(O meu primeiro projeto)
 
 Gerenciador de tarefas no terminal feito em Python.
 
