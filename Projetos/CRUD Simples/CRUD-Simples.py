@@ -62,11 +62,24 @@ def editar():
 
 #Função para concluir uma tarefa.
 def check():
+    if not tarefas:
+        print('Nenhuma tarefa cadastrada!')
+        return
+
     listar()
-    indice = int(input('Qual tarefa deseja dar como concluida?  '))
-    tarefas[indice]['Concluído'] = not tarefas[indice]['Concluído']
-    print('Tarefa concluida')
-    listar()
+
+    try:
+        indice = int(input('Qual tarefa deseja dar como concluída?  '))
+
+        if indice < 0 or indice >= len(tarefas):
+            print('Essa tarefa não existe!')
+            return
+        tarefas[indice]['Concluído'] = not tarefas[indice]['Concluído']
+        print('Tarefa concluída!')
+        listar()
+
+    except ValueError:
+        print('Digite um número válido!')
 
 #Manter o código aberto
 while True:
