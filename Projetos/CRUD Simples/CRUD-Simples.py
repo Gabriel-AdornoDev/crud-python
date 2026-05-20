@@ -20,6 +20,7 @@ def listar():
           concluidas += 1
         else:
              pendentes += 1
+    
     print(f'{concluidas} tarefas concluídas \n {pendentes} tarefas pendentes')
 
 #Função para deletar uma tarefa.           
@@ -40,10 +41,22 @@ def deletar():
         tarefas.pop(indice)
         print("Tarefa deletada!")
 
-#Função para editar uma tarefa.
+#Função para editar uma tarefa
 def editar():
+    if not tarefas:
+        print('Nenhuma tarefa cadastrada!')
+        return
     listar()
-    indice = int(input('Qual tarefa deseja editar?  '))
+    try:
+        indice = int(input('Qual tarefa deseja editar?  '))
+    except ValueError:
+        print('Erro, digite um número válido!')
+        editar()
+        return
+    if indice < 0 or indice > len(tarefas) - 1:
+        print('Erro, essa tarefa não existe!')
+        editar()
+        return
     novo_titulo = input('Novo título: ')
     tarefas[indice]['titulo'] = novo_titulo
 
